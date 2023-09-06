@@ -13,7 +13,7 @@ public class CameraLook : MonoBehaviour
     [HideInInspector] public bool lockCursor = true;
 
     [Header("Sensitivity")]
-    [Range(1, 10)]
+    [Range(1, 100)]
     public float sensitivity = 5f;
 
     [Header("Limits")]
