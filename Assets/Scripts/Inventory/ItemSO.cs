@@ -14,6 +14,6 @@ public class ItemSO : ScriptableObject
     public string description = "New Item Description";
 
     public bool isStackable;
-    public int maxStack = 1;
+    public int maxStack = 10;
 
 }
