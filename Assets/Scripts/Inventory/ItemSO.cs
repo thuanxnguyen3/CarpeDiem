@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu (fileName = "New Item", menuName = "Survival Game/Inventory/New Item")]
 public class ItemSO : ScriptableObject
 {
-    public enum ItemType { Generic, Consumable, MeleeWeapon}
+    public enum ItemType { Generic, Consumable, Weapon, MeleeWeapon}
 
     [Header("General")]
     public ItemType itemType;
@@ -14,6 +14,18 @@ public class ItemSO : ScriptableObject
     public string description = "New Item Description";
 
     public bool isStackable;
-    public int maxStack = 10;
+    public int maxStack = 1;
+    /*
+    [Header("Weapon")]
+    public float damage;
 
+    [Header("Food")]
+    public float nutrition;
+    */
+    [Header("Consumable")]
+    public float healthChange = 10f;
+    public float hungerChange = 10f;
+    public float thirstChange = 10f;
 }
+
+

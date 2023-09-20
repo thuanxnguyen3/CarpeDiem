@@ -18,7 +18,7 @@ public class InventoryManager : MonoBehaviour
     public Transform contentHolder;
 
     private Slot[] inventorySlots;
-    [SerializeField] private Slot[] allSlots;
+    //[SerializeField] private Slot[] allSlots;
 
     private void Start()
     {
@@ -44,6 +44,7 @@ public class InventoryManager : MonoBehaviour
     private void GenerateSlots()
     {
         List<Slot> inventorySlots_ = new List<Slot>();
+        /*
         List<Slot> allSlots_ = new List<Slot>();
 
         // get all the slots array into the local list
@@ -51,19 +52,65 @@ public class InventoryManager : MonoBehaviour
         {
             allSlots_.Add(allSlots[i]);
         }
-
+        */
         // generate slots
         for (int i = 0; i < inventorySize; i++)
         {
             Slot slot = Instantiate(slotTemplate.gameObject, contentHolder).GetComponent<Slot>();
 
             inventorySlots_.Add(slot);
-            allSlots_.Add(slot);
+            //allSlots_.Add(slot);
         }
 
         inventorySlots = inventorySlots_.ToArray();
-        allSlots = allSlots_.ToArray();
+        //allSlots = allSlots_.ToArray();
     }
+
+    public void DragDrop(Slot from, Slot to)
+    {
+        // swapping
+        if (from.data != to.data)
+        {
+            ItemSO data = to.data;
+            int stackSize = to.stackSize;
+
+            to.data = from.data;
+            to.stackSize = from.stackSize;
+
+            from.data = data;
+            from.stackSize = stackSize;
+        }
+        // stacking 
+        else
+        {
+            if (from.data.isStackable)
+            {
+                if (from.stackSize + to.stackSize > from.data.maxStack)
+                {
+                    int amountLeft = (from.stackSize + to.stackSize) - from.data.maxStack;
+
+                    from.stackSize = amountLeft;
+
+                    to.stackSize = to.data.maxStack;
+                }
+            } else
+            {
+                ItemSO data = to.data;
+                int stackSize = to.stackSize;
+
+                to.data = from.data;
+                to.stackSize = from.stackSize;
+
+                from.data = data;
+                from.stackSize = stackSize;
+            }
+        }
+
+        from.UpdateSlot();
+        to.UpdateSlot();
+    }
+
+
     public void AddItem(Pickup pickUp)
     {
         if (pickUp.data.isStackable)
@@ -187,6 +234,9 @@ public class InventoryManager : MonoBehaviour
     public void DropItem(Slot slot)
     {
         Pickup pickup = Instantiate(dropModel, dropPos).AddComponent<Pickup>();
+        pickup.transform.position = dropPos.position;
+        pickup.transform.SetParent(null);
+
 
         pickup.data = slot.data;
         pickup.stackSize = slot.stackSize;
