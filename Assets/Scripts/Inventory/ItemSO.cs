@@ -23,9 +23,9 @@ public class ItemSO : ScriptableObject
     public float nutrition;
     */
     [Header("Consumable")]
-    public float healthChange = 10f;
-    public float hungerChange = 10f;
-    public float thirstChange = 10f;
+    public float healthChange = 0f;
+    public float hungerChange = 0f;
+    public float thirstChange = 0f;
 }
 
 

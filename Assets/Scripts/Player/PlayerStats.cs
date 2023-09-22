@@ -37,20 +37,42 @@ public class PlayerStats : MonoBehaviour
     {
         UpdateStats();
         UpdateUI();
+        
+
     }
 
     private void UpdateStats()
     {
-        StatsLimit(health, maxHealth);
-        StatsLimit(hunger, maxHunger);
-        StatsLimit(thirst, maxThirst);
+        if (health <= 0)
+            health = 0;
+        if (health >= maxHealth)
+            health = maxHealth;
+
+        if (hunger <= 0)
+            hunger = 0;
+        if (hunger >= maxHunger)
+            hunger = maxHunger;
+
+        if (thirst <= 0)
+            thirst = 0;
+        if (thirst >= maxThirst)
+            thirst = maxThirst;
 
         // Damages
         if (hunger <= 0)
             health -= hungerDmg * Time.deltaTime;
+        else if (hunger <= 25)
+            health -= (hungerDmg * 0.75f) * Time.deltaTime;
+        else if (hunger <= 50)
+            health -= (hungerDmg * 0.5f) * Time.deltaTime;
+
 
         if (thirst <= 0)
             health -= thirstDmg * Time.deltaTime;
+        else if (thirst <= 25)
+            health -= (thirstDmg * 0.75f) * Time.deltaTime;
+        else if (thirst <= 50)
+            health -= (thirstDmg * 0.5f) * Time.deltaTime;
 
         // Depletions
         if (hunger > 0)
@@ -71,15 +93,6 @@ public class PlayerStats : MonoBehaviour
         thirstBar.numberText.text = thirst.ToString("f0");
         thirstBar.bar.fillAmount = thirst / 100;
 
-    }
-
-    private void StatsLimit(float stat, float maxStat)
-    {
-        if (stat <= 0)
-            stat = 0;
-
-        if (stat >= maxStat)
-            stat = maxStat;
     }
 
 

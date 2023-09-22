@@ -22,14 +22,26 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
 
     private void Start()
     {
-        dragDropHandler = GetComponentInParent<DragDropHandler>();
-        inventory = GetComponentInParent<InventoryManager>();
+        dragDropHandler = GetComponentInParent<Player>().GetComponentInChildren<DragDropHandler>();
+        inventory = GetComponentInParent<Player>().GetComponentInChildren<InventoryManager>();
 
         UpdateSlot();
     }
 
     public void UpdateSlot()
     {
+        if (data != null)
+        {
+            if (data.itemType != ItemSO.ItemType.Weapon)
+            {
+                if (stackSize <= 0)
+                {
+                    data = null;
+                }
+            }
+        }
+        
+
         if (data == null)
         {
             isEmpty = true;
@@ -106,6 +118,30 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
         }
     }
 
+    public void Try_Use()
+    {
+        if (data == null)
+            return;
+
+        if (data.itemType == ItemSO.ItemType.Consumable)
+        {
+            Consume();
+        }
+    }
+
+    public void Consume()
+    {
+        PlayerStats stats = GetComponentInParent<PlayerStats>();
+
+        stats.health += data.healthChange;
+        stats.hunger += data.hungerChange;
+        stats.thirst += data.thirstChange;
+
+        stackSize--;
+
+        UpdateSlot();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (dragDropHandler.isDragging)
@@ -121,4 +157,6 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
             dragDropHandler.slotDraggedTo = null;
         }
     }
+
+
 }

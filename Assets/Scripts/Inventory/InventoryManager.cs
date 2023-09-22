@@ -9,24 +9,56 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Settings")]
     public int inventorySize = 24;
-
+    public int hotbarSize = 6;
 
     [Header("Refs")]
     public GameObject dropModel;
     public Transform dropPos;
     public GameObject slotTemplate;
     public Transform contentHolder;
+    public Transform hotbarContentHolder;
 
     private Slot[] inventorySlots;
+    private Slot[] hotbarSlots;
     //[SerializeField] private Slot[] allSlots;
 
     private void Start()
     {
+        GenerateHotbarSlots();
         GenerateSlots();
+        
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            hotbarSlots[0].Try_Use();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            hotbarSlots[1].Try_Use();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            hotbarSlots[2].Try_Use();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            hotbarSlots[3].Try_Use();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            hotbarSlots[4].Try_Use();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            hotbarSlots[5].Try_Use();
+        }
+
+
+
+
         if (Input.GetKeyDown(inventoryKey))
         {
             opened = !opened;
@@ -60,10 +92,30 @@ public class InventoryManager : MonoBehaviour
 
             inventorySlots_.Add(slot);
             //allSlots_.Add(slot);
+            
         }
 
         inventorySlots = inventorySlots_.ToArray();
         //allSlots = allSlots_.ToArray();
+        
+    }
+
+    private void GenerateHotbarSlots()
+    {
+        List<Slot> inventorySlots_ = new List<Slot>();
+        List<Slot> hotbarList = new List<Slot>();
+
+        // generate slots
+        for (int i = 0; i < hotbarSize; i++)
+        {
+            Slot slot = Instantiate(slotTemplate.gameObject, hotbarContentHolder).GetComponent<Slot>();
+
+            inventorySlots_.Add(slot);
+            hotbarList.Add(slot);
+        }
+
+        inventorySlots = inventorySlots_.ToArray();
+        hotbarSlots = hotbarList.ToArray();
     }
 
     public void DragDrop(Slot from, Slot to)
@@ -185,7 +237,7 @@ public class InventoryManager : MonoBehaviour
                     }
                 }
 
-                // IF WE HAVE AN EMPTY SLOT THAN ADD THE ITEM
+                // IF WE HAVE AN EMPTY SLOT THEN ADD THE ITEM
                 if (emptySlot != null)
                 {
                     emptySlot.AddItemToSlot(pickUp.data, pickUp.stackSize);
