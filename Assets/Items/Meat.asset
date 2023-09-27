@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 72915020673c2e1449af823daf70d0d5, type: 3}
   itemName: Meat
   description: Food, you can consume it to satisfy your hunger.
-  isStackable: 0
+  isStackable: 1
   maxStack: 10
   healthChange: 0
   hungerChange: 25
