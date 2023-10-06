@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour
 
     public void UpdateAiming()
     {
-        if (Input.GetButton("Fire1") && !player.running)
+        if (Input.GetButton("Fire2") && !player.running)
         {
             transform.localPosition = Vector3.Slerp(transform.localPosition, aimPos, aimSpeed * Time.deltaTime);
         } else
