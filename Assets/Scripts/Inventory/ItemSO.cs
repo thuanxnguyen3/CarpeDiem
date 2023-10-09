@@ -24,7 +24,20 @@ public class ItemSO : ScriptableObject
 
     [Header("Food")]
     public float nutrition;
-    
+
+    [Space]
+    public float horizontalRecoil;
+    public float minVerticalRecoil;
+    public float maxVerticalRecoil;
+
+    [Space]
+    [Space]
+    [Space]
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
+    public AudioClip takeoutSound;
+    public AudioClip emptySound;
+
     [Header("Consumable")]
     public float healthChange = 0f;
     public float hungerChange = 0f;

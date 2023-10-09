@@ -23,6 +23,13 @@ MonoBehaviour:
   magSize: 10
   fireRate: 0.12
   nutrition: 0
+  horizontalRecoil: 3
+  minVerticalRecoil: 2
+  maxVerticalRecoil: 4
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  takeoutSound: {fileID: 0}
+  emptySound: {fileID: 0}
   healthChange: 0
   hungerChange: 0
   thirstChange: 0

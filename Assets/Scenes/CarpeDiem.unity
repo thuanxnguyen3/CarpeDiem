@@ -1650,8 +1650,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425917167}
-  m_LocalRotation: {x: -0.16799416, y: 0.10712839, z: 0.018372266, w: 0.9797776}
-  m_LocalPosition: {x: 19.592615, y: -17.0093, z: -178.66765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.11, y: -16.98, z: -178.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2679,13 +2679,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499364cb630192f4086a84de894f1f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 0}
   anim: {fileID: 0}
   slotEquippedOn: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 91fc99c9c7a3aca46904620d9cc15c78, type: 2}
+  isAutomatic: 1
+  shootPoint: {fileID: 963194228}
+  shootableLayers:
+    serializedVersion: 2
+    m_Bits: 2147483647
   aimSpeed: 10
   hipPos: {x: 0, y: 0, z: 0}
   aimPos: {x: -0.169, y: 0.055, z: -0.033}
   isAiming: 0
+  isReloading: 0
+  hasTakenOut: 0
 --- !u!1001 &898528681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2761,7 +2769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 57ba1b3768de20d43972dd7dcaa6e0c1, type: 2}
-  stackSize: 1
+  stackSize: 30
 --- !u!1001 &910478093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3019,7 +3027,7 @@ MonoBehaviour:
   playerNextRecoilPoint: {x: 0, y: 0, z: 0, w: 0}
   hasReachedVerticalRecoilPosition: 1
   hasReachedHorizontalRecoilPosition: 1
-  recoilSpeedMovement: 0
+  recoilSpeedMovement: 20
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3124,13 +3132,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499364cb630192f4086a84de894f1f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 0}
   anim: {fileID: 0}
   slotEquippedOn: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 605de658766e8134190b1af6b3724b39, type: 2}
+  isAutomatic: 0
+  shootPoint: {fileID: 963194228}
+  shootableLayers:
+    serializedVersion: 2
+    m_Bits: 2147483647
   aimSpeed: 10
   hipPos: {x: 0, y: 0, z: 0}
   aimPos: {x: -0.148, y: 0.071, z: -0.025}
   isAiming: 0
+  isReloading: 0
+  hasTakenOut: 0
 --- !u!1 &1016023558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4180,8 +4196,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365785086}
-  m_LocalRotation: {x: -0.16799416, y: 0.10712839, z: 0.018372266, w: 0.9797776}
-  m_LocalPosition: {x: 19.510458, y: -17.143623, z: -179.03885}
+  m_LocalRotation: {x: -0.33574474, y: -0.14605308, z: -0.052978944, w: 0.92905176}
+  m_LocalPosition: {x: 25.1143, y: -23.65654, z: -186.25502}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4282,7 +4298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 605de658766e8134190b1af6b3724b39, type: 2}
-  stackSize: 1
+  stackSize: 30
 --- !u!1 &1581273782
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,13 +5113,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499364cb630192f4086a84de894f1f36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 0}
   anim: {fileID: 0}
   slotEquippedOn: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 57ba1b3768de20d43972dd7dcaa6e0c1, type: 2}
+  isAutomatic: 0
+  shootPoint: {fileID: 963194228}
+  shootableLayers:
+    serializedVersion: 2
+    m_Bits: 2147483647
   aimSpeed: 10
   hipPos: {x: 0, y: 0, z: 0}
   aimPos: {x: -0.154007, y: 0.04309464, z: 0.002990723}
   isAiming: 0
+  isReloading: 0
+  hasTakenOut: 0
 --- !u!1001 &1829455645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5423,7 +5447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 91fc99c9c7a3aca46904620d9cc15c78, type: 2}
-  stackSize: 1
+  stackSize: 30
 --- !u!1 &2089603321
 GameObject:
   m_ObjectHideFlags: 0
