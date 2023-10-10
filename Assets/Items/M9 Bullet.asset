@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 186ccfda12cdb814c9d77fc8e9503d27, type: 3}
-  m_Name: Shotgun
+  m_Name: M9 Bullet
   m_EditorClassIdentifier: 
-  itemType: 2
-  icon: {fileID: 21300000, guid: 460ddcd513c3bee439c87376d7e7e674, type: 3}
-  itemName: Shotgun
-  description: A shotgun.
+  itemType: 0
+  icon: {fileID: 21300000, guid: b0bf747c3a426724fa87cdc14c731db6, type: 3}
+  itemName: M9 Bullets
+  description: Pistol Bullets
   isStackable: 0
-  maxStack: 30
+  maxStack: 1
   damage: 20
   range: 200
   magSize: 30
-  bulletData: {fileID: 11400000, guid: fb3e4387051d33440b3028b40042e379, type: 2}
+  bulletData: {fileID: 0}
   fireRate: 0.1
   nutrition: 0
-  zoomFOV: 47.5
   horizontalRecoil: 0
   minVerticalRecoil: 0
   maxVerticalRecoil: 0
@@ -32,9 +31,9 @@ MonoBehaviour:
   aimSpread: 0
   shotgunFire: 0
   pelletsPerShot: 8
-  shootSound: {fileID: 8300000, guid: eb8e62a5064966e4cb8fc6bc832fc793, type: 3}
-  reloadSound: {fileID: 8300000, guid: 9e94c38133c35e64fab21d8e83c7dae3, type: 3}
-  takeoutSound: {fileID: 8300000, guid: 9e94c38133c35e64fab21d8e83c7dae3, type: 3}
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}
+  takeoutSound: {fileID: 0}
   emptySound: {fileID: 0}
   healthChange: 0
   hungerChange: 0

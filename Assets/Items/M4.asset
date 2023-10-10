@@ -21,14 +21,20 @@ MonoBehaviour:
   damage: 40
   range: 200
   magSize: 30
+  bulletData: {fileID: 11400000, guid: fe8a746df8d4b7641b021eab3e7f8db0, type: 2}
   fireRate: 0.1
   nutrition: 0
+  zoomFOV: 47.5
   horizontalRecoil: 1.75
   minVerticalRecoil: 1.5
   maxVerticalRecoil: 3
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
-  takeoutSound: {fileID: 0}
+  hipSpread: 0.04
+  aimSpread: 0
+  shotgunFire: 0
+  pelletsPerShot: 8
+  shootSound: {fileID: 8300000, guid: e93e16bea135c554ba1b30474eca6990, type: 3}
+  reloadSound: {fileID: 8300000, guid: fb0b339c29287fe409290133f95bd773, type: 3}
+  takeoutSound: {fileID: 8300000, guid: fb0b339c29287fe409290133f95bd773, type: 3}
   emptySound: {fileID: 0}
   healthChange: 0
   hungerChange: 0
