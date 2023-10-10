@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public WindowHandler windowHandler;
     private CharacterController cc;
     private CameraLook cam;
 
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        windowHandler = GetComponent<WindowHandler>();
         cc = GetComponent<CharacterController>();
         cam = GetComponentInChildren<CameraLook>();
 

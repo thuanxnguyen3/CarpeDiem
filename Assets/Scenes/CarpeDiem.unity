@@ -973,18 +973,35 @@ MonoBehaviour:
   audioS: {fileID: 0}
   anim: {fileID: 0}
   slotEquippedOn: {fileID: 0}
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 3b5c3eb3c093a0748ba3941503d4889d, type: 2}
   isAutomatic: 0
   shootPoint: {fileID: 963194228}
   shootableLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 55
   aimSpeed: 10
   hipPos: {x: 0, y: 0, z: 0}
   aimPos: {x: 0, y: 0, z: 0}
   isAiming: 0
   isReloading: 0
   hasTakenOut: 0
+--- !u!1 &163572635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7402510570408106576, guid: 4e1751ec0d65b4145a6c3ff2b57573b5, type: 3}
+  m_PrefabInstance: {fileID: 163572630}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &163572636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163572635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32af6b4bacce55545874aef38c23d8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &171861708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -998,15 +1015,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481103935108696371, guid: fba439d71ef6d0d4398309b9805546f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.187
+      value: 21.11
       objectReference: {fileID: 0}
     - target: {fileID: 3481103935108696371, guid: fba439d71ef6d0d4398309b9805546f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 44.87
+      value: 44.54
       objectReference: {fileID: 0}
     - target: {fileID: 3481103935108696371, guid: fba439d71ef6d0d4398309b9805546f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -177.809
+      value: -175.13
       objectReference: {fileID: 0}
     - target: {fileID: 3481103935108696371, guid: fba439d71ef6d0d4398309b9805546f5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1078,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &176029944
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6040,7 +6057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2089603322
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6079,6 +6096,7 @@ MonoBehaviour:
   - {fileID: 894729442}
   - {fileID: 976827741}
   - {fileID: 1806740284}
+  - {fileID: 163572634}
   opened: 0
   inventoryKey: 9
   inventorySize: 24

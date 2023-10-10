@@ -52,12 +52,16 @@ public class Weapon : MonoBehaviour
             if (currentFireRate < fireRate)
                 currentFireRate += Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && !player.windowHandler.inventory.opened)
             {
                 Start_Reload();
             }
 
+
             UpdateAiming();
+
+            if (player.windowHandler.inventory.opened)
+                return;
 
             if (isAutomatic)
             {
@@ -89,7 +93,13 @@ public class Weapon : MonoBehaviour
         } 
         else if (weaponData.itemType == ItemSO.ItemType.MeleeWeapon)
         {
+            if (currentFireRate < fireRate)
+                currentFireRate += Time.deltaTime;
 
+            if (Input.GetButton("Fire1"))
+            {
+                Swing();
+            }
         }
     }
 
@@ -97,7 +107,7 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        if (currentFireRate < fireRate || isReloading || !hasTakenOut || player.running || slotEquippedOn.stackSize <= 0)
+        if (currentFireRate < fireRate || isReloading || !hasTakenOut || player.running || slotEquippedOn.stackSize <= 0 || player.windowHandler.inventory.opened)
             return;
 
 
@@ -137,7 +147,7 @@ public class Weapon : MonoBehaviour
 
     public void ShotgunShoot()
     {
-        if (currentFireRate < fireRate || isReloading || !hasTakenOut || player.running || slotEquippedOn.stackSize <= 0)
+        if (currentFireRate < fireRate || isReloading || !hasTakenOut || player.running || slotEquippedOn.stackSize <= 0 || player.windowHandler.inventory.opened)
             return;
 
         for (int i = 0; i < weaponData.pelletsPerShot; i++)
@@ -277,7 +287,7 @@ public class Weapon : MonoBehaviour
 
     public void UpdateAiming()
     {
-        if (Input.GetButton("Fire2") && !player.running && !isReloading)
+        if (Input.GetButton("Fire2") && !player.running && !isReloading && !player.windowHandler.inventory.opened)
         {
             transform.localPosition = Vector3.Slerp(transform.localPosition, aimPos, aimSpeed * Time.deltaTime);
             isAiming = true;
@@ -290,6 +300,58 @@ public class Weapon : MonoBehaviour
     }
 
     #endregion
+
+
+    #region Melee Functions
+
+    public void Swing()
+    {
+        if (currentFireRate < fireRate || isReloading || !hasTakenOut || player.running || slotEquippedOn.stackSize <= 0)
+            return;
+
+        anim.SetTrigger("Swing");
+
+        currentFireRate = 0;
+    }
+
+    public void CheckForHit()
+    {
+        RaycastHit hit;
+
+        if (Physics.SphereCast(shootPoint.position, 0.2f, shootPoint.forward, out hit, weaponData.range, shootableLayers))
+        {
+            Hit();
+        }
+        else
+        {
+            Miss();
+        }
+    }
+
+    public void Miss()
+    {
+        anim.SetTrigger("Miss");
+    }
+
+
+
+    public void Hit()
+    {
+        anim.SetTrigger("Hit");
+    }
+
+    public void ExecuteHit()
+    {
+        RaycastHit hit;
+        if (Physics.SphereCast(shootPoint.position, 0.2f, shootPoint.forward, out hit, weaponData.range, shootableLayers))
+        {
+
+        }
+    }
+
+
+    #endregion
+
 
     public void UpdateAnimation()
     {
