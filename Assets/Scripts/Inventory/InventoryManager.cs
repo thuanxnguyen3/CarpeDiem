@@ -122,6 +122,17 @@ public class InventoryManager : MonoBehaviour
 
     public void DragDrop(Slot from, Slot to)
     {
+        // unequip weapon from slots
+        if (from.weaponEquipped != null)
+        {
+            from.weaponEquipped.UnEquip();
+
+        }
+        if (to.weaponEquipped != null)
+        {
+            to.weaponEquipped.UnEquip();
+        }
+
         // swapping
         if (from.data != to.data)
         {

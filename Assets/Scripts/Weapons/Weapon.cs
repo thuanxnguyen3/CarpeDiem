@@ -129,7 +129,7 @@ public class Weapon : MonoBehaviour
         {
             //GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 
-            Debug.Log($"Hitted: {hit.transform.name}");
+            Debug.Log($"Hit: {hit.transform.name}");
         }
 
 
@@ -365,6 +365,7 @@ public class Weapon : MonoBehaviour
         GetComponentInParent<CameraFOV_Handler>().weapon = this;
 
         slotEquippedOn = slot;
+        slotEquippedOn.weaponEquipped = this;
 
         transform.localPosition = hipPos;
     }
@@ -373,8 +374,12 @@ public class Weapon : MonoBehaviour
     {
         GetComponentInParent<CameraFOV_Handler>().weapon = null;
 
-        gameObject.SetActive(false);
+        slotEquippedOn.weaponEquipped = null;
 
         slotEquippedOn = null;
+
+        gameObject.SetActive(false);
+
+
     }
 }
