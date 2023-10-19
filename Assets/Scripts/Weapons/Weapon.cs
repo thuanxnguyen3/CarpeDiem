@@ -10,9 +10,10 @@ public class Weapon : MonoBehaviour
     [HideInInspector] public Animator anim;
     [HideInInspector] public Slot slotEquippedOn;
 
-    //public GameObject bulletHolePrefab;
+    public GameObject bulletHolePrefab;
     public ItemSO weaponData;
     public bool isAutomatic;
+    public ParticleSystem muzzleFlash;
 
     public Transform shootPoint;
     public LayerMask shootableLayers;
@@ -127,9 +128,18 @@ public class Weapon : MonoBehaviour
 
         if(Physics.Raycast(shootPoint.position, shootDir, out hit, weaponData.range, shootableLayers))
         {
-            //GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 
             Debug.Log($"Hit: {hit.transform.name}");
+        }
+
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Muzzle Flash is not assigned");
         }
 
 
@@ -171,10 +181,19 @@ public class Weapon : MonoBehaviour
 
             if (Physics.Raycast(shootPoint.position, shootDir, out hit, weaponData.range, shootableLayers))
             {
-                //GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
+                GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 
                 Debug.Log($"Hit: {hit.transform.name}");
             }
+        }
+
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Muzzle Flash is not assigned");
         }
 
         anim.CrossFadeInFixedTime("M9 Pistol Shoot", 0.015f);
@@ -306,7 +325,7 @@ public class Weapon : MonoBehaviour
 
     public void Swing()
     {
-        if (currentFireRate < fireRate || isReloading || !hasTakenOut || player.running || slotEquippedOn.stackSize <= 0)
+        if (currentFireRate < fireRate || isReloading || !hasTakenOut || player.running || slotEquippedOn.stackSize <= 0 || player.windowHandler.inventory.opened)
             return;
 
         anim.SetTrigger("Swing");
@@ -377,6 +396,9 @@ public class Weapon : MonoBehaviour
         slotEquippedOn.weaponEquipped = null;
 
         slotEquippedOn = null;
+
+        isReloading = false;
+        hasTakenOut = false;
 
         gameObject.SetActive(false);
 

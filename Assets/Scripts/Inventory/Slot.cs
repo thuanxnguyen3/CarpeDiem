@@ -135,6 +135,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
                 {
                     if (inventory.weapons[i].slotEquippedOn == this)
                     {
+                      
                         shouldJustUnequip = true;
                     }
 
@@ -150,6 +151,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPoin
             {
                 if (inventory.weapons[i].weaponData == data)
                 {
+                
                     inventory.weapons[i].Equip(this);
                 }
             }

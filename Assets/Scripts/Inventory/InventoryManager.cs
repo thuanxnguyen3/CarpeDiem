@@ -158,6 +158,13 @@ public class InventoryManager : MonoBehaviour
 
                     to.stackSize = to.data.maxStack;
                 }
+                else 
+                {
+                    to.stackSize += from.stackSize;
+                    from.Clean();
+                    from.UpdateSlot();
+                    to.UpdateSlot();
+                }
             } else
             {
                 ItemSO data = to.data;

@@ -20,7 +20,7 @@ MonoBehaviour:
   maxStack: 30
   damage: 20
   range: 200
-  magSize: 30
+  magSize: 2
   bulletData: {fileID: 11400000, guid: fb3e4387051d33440b3028b40042e379, type: 2}
   fireRate: 0.1
   nutrition: 0

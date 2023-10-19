@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6603774, g: 0.5448503, b: 0.44544324, a: 0.77254903}
+  m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0.5647059}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -187,9 +187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa419f137201beb4b8d7b02c1eda2149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponEquipped: {fileID: 0}
   data: {fileID: 0}
   stackSize: 0
   icon: {fileID: 1391913666533606294}
+  hotbarSlotSelected: {fileID: 6888845434734249239, guid: 925336d1a7c28e74c9dffbe93bb39f24, type: 3}
   stackText: {fileID: 2195327000790069509}
 --- !u!1 &4101592820083166663
 GameObject:
