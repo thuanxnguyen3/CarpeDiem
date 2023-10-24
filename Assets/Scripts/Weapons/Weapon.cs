@@ -362,9 +362,19 @@ public class Weapon : MonoBehaviour
     public void ExecuteHit()
     {
         RaycastHit hit;
+
         if (Physics.SphereCast(shootPoint.position, 0.2f, shootPoint.forward, out hit, weaponData.range, shootableLayers))
         {
+            GatherableObject gatherObj = hit.transform.GetComponent<GatherableObject>();
+            GatherExtension gatherExt = hit.transform.GetComponent<GatherExtension>();
 
+
+
+            if (gatherObj != null)
+                gatherObj.Gather(weaponData, GetComponentInParent<WindowHandler>().inventory);
+
+            if (gatherExt != null)
+                gatherExt.Gather(weaponData, GetComponentInParent<WindowHandler>().inventory);
         }
     }
 

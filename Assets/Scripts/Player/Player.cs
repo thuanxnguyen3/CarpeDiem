@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +18,20 @@ public class Player : MonoBehaviour
     private float gravityAcceleration;
     private float yVelocity;
 
+    [HideInInspector] public bool crouching;
+    [HideInInspector] public bool walking;
     [HideInInspector] public bool running;
+
+    [Header("Footsteps")]
+    private AudioSource audioS;
+
+    private float currentCrouchLength;
+    private float currentWalkLength;
+    private float currentRunLength;
+
+    public float crouchStepLength;
+    public float walkStepLength;
+    public float runStepLength;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +39,49 @@ public class Player : MonoBehaviour
         windowHandler = GetComponent<WindowHandler>();
         cc = GetComponent<CharacterController>();
         cam = GetComponentInChildren<CameraLook>();
+        audioS = GetComponent<AudioSource>();
 
         gravityAcceleration = gravity * gravity;
         gravityAcceleration *= Time.deltaTime;
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        if (crouching)
+        {
+            if (currentCrouchLength < crouchStepLength)
+                currentCrouchLength += Time.deltaTime;
+            else
+            {
+                currentCrouchLength = 0;
+
+                audioS.Play();
+            }
+        }
+        else if (walking)
+        {
+            if (currentWalkLength < walkStepLength)
+                currentWalkLength += Time.deltaTime;
+            else
+            {
+                currentWalkLength = 0;
+
+                audioS.Play();
+            }
+        }
+        else if (running)
+        {
+            if (currentRunLength < runStepLength)
+                currentRunLength += Time.deltaTime;
+            else
+            {
+                currentRunLength = 0;
+
+                audioS.Play();
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         Movement();   
@@ -59,6 +108,8 @@ public class Player : MonoBehaviour
             cc.height = Mathf.Lerp(cc.height, 2, crouchTransitionSpeed * Time.deltaTime);
             cc.center = Vector3.Lerp(cc.center, new Vector3(0, 1, 0), crouchTransitionSpeed * Time.deltaTime);
 
+            crouching = false;
+            walking = false;
             running = true;
         }
         else if (Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
@@ -69,6 +120,8 @@ public class Player : MonoBehaviour
             cc.height = Mathf.Lerp(cc.height, 1.2f, crouchTransitionSpeed * Time.deltaTime);
             cc.center = Vector3.Lerp(cc.center, new Vector3(0, 0.59f, 0), crouchTransitionSpeed * Time.deltaTime);
 
+            crouching = true;
+            walking = false;
             running = false;
         }
         else
@@ -79,9 +132,20 @@ public class Player : MonoBehaviour
             cc.height = Mathf.Lerp(cc.height, 2, crouchTransitionSpeed * Time.deltaTime);
             cc.center = Vector3.Lerp(cc.center, new Vector3(0, 1, 0), crouchTransitionSpeed * Time.deltaTime);
 
+            crouching = false;
+            walking = true;
             running = false;
 
         }
+
+        if (moveDir == Vector3.zero)
+        {
+            crouching = false;
+            walking = false;
+            running = false;
+        }
+
+
         if (cc.isGrounded)
         {
             yVelocity = 0;
@@ -103,4 +167,43 @@ public class Player : MonoBehaviour
 
         cc.Move(moveDir);
     }
+
+
+
+    public AudioClip GetFootstep()
+    {
+        //RaycastHit hit;
+        /*
+        if (Physics.SphereCast(cc.center, 100.2f, Vector3.down, out hit, cc.bounds.extents.y + 100.3f))
+        {
+            Debug.Log("Passed sphere cast");
+            Surface surface = hit.transform.GetComponent<Surface>();
+
+            if (surface != null)
+            {
+                int i = Random.Range(0, surface.surface.footsteps.Length);
+
+                return surface.surface.footsteps[i];
+            }
+            else
+                return null;
+        }
+        else
+            Debug.Log("Did not pass sphere cast");
+            return null;
+
+        */
+        Surface surface = transform.GetComponent<Surface>();
+
+        if (surface != null)
+        {
+            int i = Random.Range(0, surface.surface.footsteps.Length);
+
+            return surface.surface.footsteps[i];
+        }
+        else
+            return null;
+    }
+
+
 }
