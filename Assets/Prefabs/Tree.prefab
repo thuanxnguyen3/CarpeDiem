@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fba7ead5c93c6f47a2595613bb00edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathType: 1
   gatherDatas:
   - {fileID: 11400000, guid: b0746243b3091794392d2ea42da0a95e, type: 2}
   hits: 5
