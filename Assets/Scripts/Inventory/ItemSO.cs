@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [CreateAssetMenu (fileName = "New Item", menuName = "Survival Game/Inventory/New Item")]
 public class ItemSO : ScriptableObject
 {
-    public enum ItemType { Generic, Consumable, Weapon, MeleeWeapon}
+    public enum ItemType { Generic, Consumable, Weapon, MeleeWeapon, Buildable}
 
     [Header("General")]
     public ItemType itemType;
@@ -51,6 +51,10 @@ public class ItemSO : ScriptableObject
     public float healthChange = 0f;
     public float hungerChange = 0f;
     public float thirstChange = 0f;
+
+    [Header("Buildable")]
+    public BuildGhost ghost;
+
 }
 
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public Weapon[] weapons;
+    [HideInInspector] public BuildingHandler building;
 
     public bool opened;
     public KeyCode inventoryKey = KeyCode.Tab;
@@ -26,6 +27,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
+        building = GetComponentInParent<WindowHandler>().building;
+
         GenerateHotbarSlots();
         GenerateSlots();
         
