@@ -148,6 +148,20 @@ public class InventoryManager : MonoBehaviour
             to.weaponEquipped.UnEquip();
         }
 
+        // stop building
+        if (building.slotInUse != null)
+        {
+            if (from == building.slotInUse)
+            {
+                building.slotInUse = null;
+            }
+            if (to == building.slotInUse)
+            {
+                building.slotInUse = null;
+            }
+        }
+
+
         // swapping
         if (from.data != to.data)
         {
