@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Storage Box
   m_EditorClassIdentifier: 
   itemType: 4
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 12ef7cbdfe0e143fa858a324456c8979, type: 3}
   itemName: Storage Box
   description: A wood storage box with 12 slots
   isStackable: 0

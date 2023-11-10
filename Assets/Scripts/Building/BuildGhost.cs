@@ -7,7 +7,10 @@ public class BuildGhost : MonoBehaviour
     public GameObject buildPrefab;
     public bool canBuild;
 
-
+    private void Start()
+    {
+        canBuild = true;
+    }
 
     private void OnTriggerStay(Collider other)
     {

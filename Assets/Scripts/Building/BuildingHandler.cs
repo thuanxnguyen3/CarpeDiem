@@ -74,6 +74,7 @@ public class BuildingHandler : MonoBehaviour
             ghost = Instantiate(slotInUse.data.ghost, offGroundPoint.transform.position, GetComponentInParent<Player>().transform.rotation);
         }
 
+        UpdateColors();
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, range))
@@ -81,6 +82,7 @@ public class BuildingHandler : MonoBehaviour
             if (hit.transform.GetComponent<BuildBlocked>() == null)
             {
                 ghost.transform.position = hit.point;
+                ghost.transform.rotation = GetComponentInParent<Player>().transform.rotation;
                 canBuild = true;
             } 
             else
