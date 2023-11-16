@@ -130,7 +130,12 @@ public class Weapon : MonoBehaviour
         {
             GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 
-            Debug.Log($"Hit: {hit.transform.name}");
+            BasicAI ai = hit.transform.GetComponent<BasicAI>();
+
+            if (ai != null)
+            {
+                ai.health -= weaponData.damage;
+            }
         }
 
         if (muzzleFlash != null)
@@ -183,7 +188,12 @@ public class Weapon : MonoBehaviour
             {
                 GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
 
-                Debug.Log($"Hit: {hit.transform.name}");
+                BasicAI ai = hit.transform.GetComponent<BasicAI>();
+
+                if (ai != null)
+                {
+                    ai.health -= weaponData.damage;
+                }
             }
         }
 
