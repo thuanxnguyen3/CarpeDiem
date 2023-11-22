@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public WindowHandler windowHandler;
     private CharacterController cc;
-    private CameraLook cam;
+    [HideInInspector] public CameraLook cam;
 
     [SerializeField] private float crouchSpeed = 2f;
     [SerializeField] private float walkSpeed = 4f;
@@ -47,6 +47,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (GetComponent<PlayerStats>().health <= 0)
+        {
+            if (!GetComponent<PlayerStats>().isDead)
+                Die();
+
+
+            return;
+        }
+
         if (crouching)
         {
             if (currentCrouchLength < crouchStepLength)
@@ -80,6 +89,23 @@ public class Player : MonoBehaviour
                 audioS.Play();
             }
         }
+    }
+
+    private void Die()
+    {
+        windowHandler.inventory.opened = false;
+
+        // drop inventory
+        for (int i = 0; i < windowHandler.inventory.inventorySlots.Length; i++)
+        {
+            windowHandler.inventory.inventorySlots[i].Drop();
+        }
+
+
+
+        windowHandler.deathScreen.gameObject.SetActive(true);
+
+        GetComponent<PlayerStats>().isDead = true;
     }
 
     void FixedUpdate()

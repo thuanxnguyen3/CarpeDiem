@@ -46,6 +46,9 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+        if (slotEquippedOn.data == null)
+            UnEquip();
+
         UpdateAnimation();
 
         if (weaponData.itemType == ItemSO.ItemType.Weapon)

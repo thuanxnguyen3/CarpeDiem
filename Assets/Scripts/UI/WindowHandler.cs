@@ -11,6 +11,7 @@ public class WindowHandler : MonoBehaviour
     [HideInInspector] public CraftingManager crafting;
     [HideInInspector] public StorageUI storage;
     public BuildingHandler building;
+    public DeathScreen deathScreen;
 
 
     private void Start()
@@ -20,7 +21,6 @@ public class WindowHandler : MonoBehaviour
         inventory = GetComponentInChildren<InventoryManager>();
         crafting = GetComponentInChildren<CraftingManager>();
         storage = GetComponentInChildren<StorageUI>();
-        
 
     }
 
@@ -35,7 +35,7 @@ public class WindowHandler : MonoBehaviour
             cam.lockCursor = true;
             cam.canMove = true;
         }
-        if (inventory.opened)
+        if (inventory.opened || GetComponent<PlayerStats>().isDead)
             windowOpened = true;
         else
             windowOpened = false;
