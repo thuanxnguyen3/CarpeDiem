@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
 	private float m_TimeScaleRef = 1f;
     private float m_VolumeRef = 1f;
     private bool m_Paused;
+    public GameObject pauseMenu;
 
 
     void Awake()
@@ -30,9 +31,8 @@ public class PauseMenu : MonoBehaviour
 
     public void MenuOff ()
     {
-        Time.timeScale = m_TimeScaleRef;
-        AudioListener.volume = m_VolumeRef;
-        m_Paused = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
 
@@ -48,15 +48,27 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
 
 #if !MOBILE_INPUT
 	void Update()
 	{
-		if(Input.GetKeyUp(KeyCode.Escape))
+		if(Input.GetKeyDown(KeyCode.Escape))
 		{
-		    m_MenuToggle.isOn = !m_MenuToggle.isOn;
-            Cursor.visible = m_MenuToggle.isOn;//force the cursor visible if anythign had hidden it
-		}
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0;
+            Player player = GetComponentInParent<Player>();
+            player.cam.lockCursor = false;
+            player.cam.canMove = false;
+            //m_MenuToggle.isOn = !m_MenuToggle.isOn;
+            //Cursor.visible = m_MenuToggle.isOn;//force the cursor visible if anythign had hidden it
+
+
+        }
 	}
 #endif
 
