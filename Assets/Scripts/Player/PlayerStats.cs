@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour
 {
     public bool isDead;
 
+    public bool isPaused;
+
     [Header("Player Stats")]
     public float health;
     public float maxHealth = 100f;
@@ -37,6 +39,9 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        if (isPaused)
+            return;
+
         if (isDead)
             return;
 

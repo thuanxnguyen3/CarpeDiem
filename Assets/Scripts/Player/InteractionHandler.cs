@@ -13,7 +13,13 @@ public class InteractionHandler : MonoBehaviour
 
     private void Update()
     {
+        Player player = GetComponentInParent<Player>();
+
+        if (!player.GetComponent<PlayerStats>().isDead)
+        {
             Interact();
+        }
+        
     }
 
     private void Interact()

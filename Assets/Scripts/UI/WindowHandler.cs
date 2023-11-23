@@ -12,6 +12,7 @@ public class WindowHandler : MonoBehaviour
     [HideInInspector] public StorageUI storage;
     public BuildingHandler building;
     public DeathScreen deathScreen;
+    public PauseMenu pauseMenu;
 
 
     private void Start()
@@ -35,7 +36,7 @@ public class WindowHandler : MonoBehaviour
             cam.lockCursor = true;
             cam.canMove = true;
         }
-        if (inventory.opened || GetComponent<PlayerStats>().isDead)
+        if (inventory.opened || GetComponent<PlayerStats>().isDead || GetComponent<PlayerStats>().isPaused)
             windowOpened = true;
         else
             windowOpened = false;

@@ -47,6 +47,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!GetComponent<PlayerStats>().isPaused)
+                Pause();
+
+            return;
+        }
+
         if (GetComponent<PlayerStats>().health <= 0)
         {
             if (!GetComponent<PlayerStats>().isDead)
@@ -96,7 +104,7 @@ public class Player : MonoBehaviour
         windowHandler.inventory.opened = false;
 
         // drop inventory
-        for (int i = 0; i < windowHandler.inventory.inventorySlots.Length; i++)
+        for (int i = 0; i < windowHandler.inventory.inventorySize; i++)
         {
             windowHandler.inventory.inventorySlots[i].Drop();
         }
@@ -106,6 +114,19 @@ public class Player : MonoBehaviour
         windowHandler.deathScreen.gameObject.SetActive(true);
 
         GetComponent<PlayerStats>().isDead = true;
+    }
+
+    private void Pause()
+    {
+        windowHandler.inventory.opened = false;
+
+        Time.timeScale = 0f;
+        windowHandler.pauseMenu.gameObject.SetActive(true);
+
+        GetComponent<PlayerStats>().isPaused = true;
+
+
+
     }
 
     void FixedUpdate()
