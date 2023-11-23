@@ -9,12 +9,8 @@ public class GameMusicManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
     public Slider slider;
-    private MusicManager musicManager;
+    public MusicManager musicManager;
 
-    private void Awake()
-    {
-        musicManager = GetComponent<MusicManager>();
-    }
     private void Start()
     {
         slider.value = musicManager.mainMenuVolume;

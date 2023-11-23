@@ -27,7 +27,7 @@ public class BasicAI : MonoBehaviour
     public float runSpeed = 3.5f;
     public float wanderRange = 5f;
 
-
+    public ScoreSystem score;
 
 
     public bool walk;
@@ -48,10 +48,10 @@ public class BasicAI : MonoBehaviour
     {
         if (health <= 0)
         {
-            agent.SetDestination(transform.position);
-
             Destroy(agent);
             anim.SetTrigger("Die");
+
+            score.scoreVal += 100;
 
 
 
