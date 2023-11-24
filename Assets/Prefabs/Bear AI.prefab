@@ -428,6 +428,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 7450987263635971548, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
   agent: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
   finishAttack: 0
   health: 100
   damage: 10
@@ -439,6 +442,7 @@ MonoBehaviour:
   walkSpeed: 2
   runSpeed: 3.5
   wanderRange: 11
+  walkPoint: {x: 0, y: 0, z: 0}
   score: {fileID: 0}
   walk: 0
   run: 0

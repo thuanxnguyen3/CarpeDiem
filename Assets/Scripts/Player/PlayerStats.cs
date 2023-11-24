@@ -73,7 +73,7 @@ public class PlayerStats : MonoBehaviour
             health -= hungerDmg * Time.deltaTime;
         else if (hunger <= 25)
             health -= (hungerDmg * 0.75f) * Time.deltaTime;
-        else if (hunger <= 50)
+        else if (hunger < 50)
             health -= (hungerDmg * 0.5f) * Time.deltaTime;
 
 
@@ -81,7 +81,7 @@ public class PlayerStats : MonoBehaviour
             health -= thirstDmg * Time.deltaTime;
         else if (thirst <= 25)
             health -= (thirstDmg * 0.75f) * Time.deltaTime;
-        else if (thirst <= 50)
+        else if (thirst < 50)
             health -= (thirstDmg * 0.5f) * Time.deltaTime;
 
         // Depletions
@@ -90,6 +90,16 @@ public class PlayerStats : MonoBehaviour
 
         if (thirst > 0)
             thirst -= thirstDepletion * Time.deltaTime;
+
+        // Regen
+        if (hunger >= 75 && thirst >= 75)
+        {
+            health += 10f * Time.deltaTime;
+        } 
+        else if (hunger >= 50 && thirst >= 50)
+        {
+            health += 5f * Time.deltaTime;
+        }
     }
 
     private void UpdateUI()

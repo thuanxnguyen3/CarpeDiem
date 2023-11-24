@@ -9,8 +9,9 @@ public class BasicAI : MonoBehaviour
     public Transform target;
     public NavMeshAgent agent;
     private Animator anim;
-    
+    public LayerMask whatIsGround;
 
+    private bool isWander;
     private bool isAttacking;
     public bool finishAttack;
     public float health = 100f;
@@ -23,13 +24,13 @@ public class BasicAI : MonoBehaviour
 
     [Header("Movement")]
     private float currentWanderTime;
-    public float wanderWaitTime = 10f;
+    public float wanderWaitTime = 2f;
     public bool canMoveWhileAttacking;
     [Space]
     public float walkSpeed = 2f;
     public float runSpeed = 3.5f;
     public float wanderRange = 5f;
-
+    public Vector3 walkPoint;
     public ScoreSystem score;
 
 
@@ -84,9 +85,12 @@ public class BasicAI : MonoBehaviour
             return;
         }
 
-        if(target.GetComponent<PlayerStats>().health <= 0)
+        if (target != null)
         {
-            Wander();
+            if (target.GetComponent<PlayerStats>().health <= 0)
+            {
+                Wander();
+            }
         }
 
 
@@ -112,48 +116,65 @@ public class BasicAI : MonoBehaviour
 
     public void Wander()
     {
-        if (currentWanderTime >= wanderWaitTime)
+
+        walk = true;
+        run = false;
+        if (!isWander) SearchWalkPoint();
+
+        if (isWander)
         {
-            Vector3 wanderPos = transform.position;
+            agent.SetDestination(walkPoint);
 
-            wanderPos.x += Random.Range(-wanderRange, wanderRange);
-            wanderPos.z += Random.Range(-wanderRange, wanderRange);
-
-            currentWanderTime = 0;
-
-            agent.speed = walkSpeed;
-            agent.SetDestination(wanderPos);
-
-            walk = true;
-            run = false;
         }
-        else
+
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        //Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1f)
+            isWander = false;
+
+    }
+
+    private void SearchWalkPoint()
+    {
+        //Calculate random point in range
+        float randomZ = Random.Range(-wanderRange, wanderRange);
+        float randomX = Random.Range(-wanderRange, wanderRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2.5f, whatIsGround))
         {
-            if (agent.isStopped)    
-            {
-                currentWanderTime += Time.deltaTime;
-
-                walk = false;
-                run = false;
-            }
+            isWander = true;
         }
+
     }
 
     public void Chase()
     {
         finishAttack = false;
-        agent.SetDestination(target.transform.position);
+        if (target != null)
+        {
+            agent.SetDestination(target.transform.position);
+            bearGrowl.Play();
+        }
 
-        bearGrowl.Play();
+        
 
         walk = false;
 
         run = true;
 
-        agent.speed = runSpeed;
+        isWander = false;
 
-        if (Vector3.Distance(target.transform.position, transform.position) <= minAttackDistance && !isAttacking)
-            StartAttack();
+        agent.speed = runSpeed;
+        if (target != null)
+        {
+            if (Vector3.Distance(target.transform.position, transform.position) <= minAttackDistance && !isAttacking)
+                StartAttack();
+        }
+        
     }
 
     public void StartAttack()
