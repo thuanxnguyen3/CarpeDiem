@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class BasicAI : MonoBehaviour
 {
     public Transform target;
     public NavMeshAgent agent;
     private Animator anim;
-    private bool isAttacking;
+    
 
+    private bool isAttacking;
+    public bool finishAttack;
     public float health = 100f;
 
     [Header("Attack Settings")]
@@ -33,13 +36,34 @@ public class BasicAI : MonoBehaviour
     public bool walk;
     public bool run;
 
+    public float intensity;
+    PostProcessVolume volume;
+    Vignette vignette;
+
+    public AudioSource bearGrowl;
+    public AudioSource bearDead;
+
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        volume = GetComponent<PostProcessVolume>();
+        bearGrowl = GetComponent<AudioSource>();
+        bearDead = GetComponent<AudioSource>();
 
         currentWanderTime = wanderWaitTime;
+        /*
+        volume.profile.TryGetSettings<Vignette>(out vignette);
+
+        if (!vignette)
+        {
+            print("error, vignette empty");
+        } else
+        {
+            vignette.enabled.Override(false);
+        }
+        */
     }
 
     bool hasDied;
@@ -50,7 +74,7 @@ public class BasicAI : MonoBehaviour
         {
             Destroy(agent);
             anim.SetTrigger("Die");
-
+            bearDead.Play();
             score.scoreVal += 100;
 
 
@@ -58,6 +82,11 @@ public class BasicAI : MonoBehaviour
             GetComponent<GatherableObject>().enabled = true;
             Destroy(this);
             return;
+        }
+
+        if(target.GetComponent<PlayerStats>().health <= 0)
+        {
+            Wander();
         }
 
 
@@ -100,7 +129,7 @@ public class BasicAI : MonoBehaviour
         }
         else
         {
-            if (agent.isStopped)
+            if (agent.isStopped)    
             {
                 currentWanderTime += Time.deltaTime;
 
@@ -112,7 +141,10 @@ public class BasicAI : MonoBehaviour
 
     public void Chase()
     {
+        finishAttack = false;
         agent.SetDestination(target.transform.position);
+
+        bearGrowl.Play();
 
         walk = false;
 
@@ -126,6 +158,8 @@ public class BasicAI : MonoBehaviour
 
     public void StartAttack()
     {
+        bearGrowl.Play();
+        finishAttack = false;
         isAttacking = true;
 
         if (!canMoveWhileAttacking)
@@ -137,12 +171,17 @@ public class BasicAI : MonoBehaviour
     public void FinishAttack()
     {
         if (Vector3.Distance(target.transform.position, transform.position) > maxAttackDistance)
+        {
+            finishAttack = false;
             return;
-
+        }
+        
         target.GetComponent<PlayerStats>().health -= damage;
+        finishAttack = true;
+
 
         isAttacking = false;
-
+        
     }
 
     private void OnTriggerEnter(Collider other)

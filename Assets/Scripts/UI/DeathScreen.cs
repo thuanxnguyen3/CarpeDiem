@@ -29,7 +29,6 @@ public class DeathScreen : MonoBehaviour
         player.transform.position = respawnPoints[i].transform.position;
 
         player.GetComponent<PlayerStats>().isDead = false;
-
         gameObject.SetActive(false);
 
     }
