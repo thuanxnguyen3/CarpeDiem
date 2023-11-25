@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 186ccfda12cdb814c9d77fc8e9503d27, type: 3}
-  m_Name: M9 Bullet
+  m_Name: Medkit
   m_EditorClassIdentifier: 
-  itemType: 0
-  icon: {fileID: 21300000, guid: b0bf747c3a426724fa87cdc14c731db6, type: 3}
-  itemName: Pistol Ammo
-  description: Pistol Bullets
+  itemType: 1
+  icon: {fileID: 21300000, guid: 4a1adf7ac279da14291e1e5617271645, type: 3}
+  itemName: Medkit
+  description: Medkit, recovers 100 HP
   isStackable: 1
-  maxStack: 20
+  maxStack: 5
   damage: 20
   range: 200
   magSize: 30
@@ -37,6 +37,6 @@ MonoBehaviour:
   takeoutSound: {fileID: 0}
   emptySound: {fileID: 0}
   healthChange: 0
-  hungerChange: 0
-  thirstChange: 0
+  hungerChange: 25
+  thirstChange: 5
   ghost: {fileID: 0}

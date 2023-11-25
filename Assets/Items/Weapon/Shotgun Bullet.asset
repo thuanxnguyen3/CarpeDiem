@@ -14,16 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   icon: {fileID: 21300000, guid: da8c0ffa85071d645b298052ce0fbc84, type: 3}
-  itemName: Shotgun Bullets
+  itemName: Shotgun Shells
   description: Double-Barrel Shotgun Bullets
-  isStackable: 0
-  maxStack: 1
+  isStackable: 1
+  maxStack: 8
   damage: 20
   range: 200
   magSize: 30
   bulletData: {fileID: 0}
   fireRate: 0.1
   nutrition: 0
+  zoomFOV: 60
   horizontalRecoil: 0
   minVerticalRecoil: 0
   maxVerticalRecoil: 0
@@ -38,3 +39,4 @@ MonoBehaviour:
   healthChange: 0
   hungerChange: 0
   thirstChange: 0
+  ghost: {fileID: 0}

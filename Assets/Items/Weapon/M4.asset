@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   icon: {fileID: 21300000, guid: 71c43148244884a4aa76b05e1284aba7, type: 3}
-  itemName: M4
+  itemName: M4 Carbine
   description: An automatic assault rifle.
   isStackable: 0
   maxStack: 30
@@ -39,3 +39,4 @@ MonoBehaviour:
   healthChange: 0
   hungerChange: 0
   thirstChange: 0
+  ghost: {fileID: 0}

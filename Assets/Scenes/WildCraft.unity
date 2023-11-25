@@ -2720,8 +2720,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425917167}
-  m_LocalRotation: {x: -0.1110736, y: -0.007916351, z: -0.0012366369, w: 0.9937799}
-  m_LocalPosition: {x: 493.6258, y: -415.94556, z: -617.0907}
+  m_LocalRotation: {x: -0.119947, y: -0.031738993, z: -0.0041889586, w: 0.992264}
+  m_LocalPosition: {x: 338.67484, y: -283.969, z: -882.98474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7707,8 +7707,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365785086}
-  m_LocalRotation: {x: -0.061751794, y: -0.017513394, z: -0.0016514594, w: 0.99793655}
-  m_LocalPosition: {x: 462.68204, y: -284.42615, z: -600.94226}
+  m_LocalRotation: {x: -0.119947, y: -0.031738993, z: -0.0041889586, w: 0.992264}
+  m_LocalPosition: {x: 338.67484, y: -283.969, z: -882.98474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11741,14 +11741,70 @@ PrefabInstance:
       propertyPath: basicAI.Array.data[24]
       value: 
       objectReference: {fileID: 2010568163}
+    - target: {fileID: 7450987262124966305, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: m_Spacing.y
+      value: 1.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450987262124966305, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: m_CellSize.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450987263391823226, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 26
+      objectReference: {fileID: 0}
     - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
       propertyPath: recipes.Array.size
-      value: 2
+      value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e86553dc9e5e334409cf3ae744a46046, type: 2}
     - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
       propertyPath: recipes.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 3f6f79b0264b0644c9868c5720278055, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e8dcca1b07f05e43be53fc97ec8a11e, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d93551fd961d3d41a576b0862e17a6d, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: e06a3d46cdd041246afd5c8eecfbe133, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e5c083f05b84404d83e5be67522135b, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 728df430b2384aa42b78f176462af5ce, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 56c71901130f0ff46b7d651a634d0e60, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d90f151b1bfc5b4396402933968fb9c, type: 2}
+    - target: {fileID: 7450987263554561219, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: recipes.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d90f151b1bfc5b4396402933968fb9c, type: 2}
+    - target: {fileID: 7450987263635971537, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: hungerDepletion
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450987263635971537, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
+      propertyPath: thirstDepletion
+      value: 0.375
+      objectReference: {fileID: 0}
     - target: {fileID: 7450987263635971548, guid: 93b0ddf46ca982841a731fd482e0e335, type: 3}
       propertyPath: m_RootOrder
       value: 3

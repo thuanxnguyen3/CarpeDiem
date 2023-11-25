@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   icon: {fileID: 21300000, guid: 570d0e4a92c673c439d2c4f683165377, type: 3}
-  itemName: M9
+  itemName: Pistol
   description: A semi automatic pistol.
   isStackable: 0
   maxStack: 10
@@ -39,3 +39,4 @@ MonoBehaviour:
   healthChange: 0
   hungerChange: 0
   thirstChange: 0
+  ghost: {fileID: 0}

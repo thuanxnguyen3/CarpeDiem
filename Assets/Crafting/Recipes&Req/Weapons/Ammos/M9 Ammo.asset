@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7ba4a813005b0141917f1424f6c02b0, type: 3}
-  m_Name: M4
+  m_Name: M9 Ammo
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 71c43148244884a4aa76b05e1284aba7, type: 3}
-  recipeName: M4
+  icon: {fileID: 21300000, guid: b0bf747c3a426724fa87cdc14c731db6, type: 3}
+  recipeName: Pistol Ammo
   requirements:
-  - {fileID: 11400000, guid: ce5b01da8bf9f1447825fd231f228594, type: 2}
-  craftingTime: 5
-  outcome: {fileID: 11400000, guid: 91fc99c9c7a3aca46904620d9cc15c78, type: 2}
-  outcomeAmount: 1
+  - {fileID: 11400000, guid: 5e31beeda8c4ea64cbda929c3fca89da, type: 2}
+  - {fileID: 11400000, guid: d2e95f0d42660b64ebd12819ba5d3b9a, type: 2}
+  craftingTime: 0.25
+  outcome: {fileID: 11400000, guid: 201987efad85c9846a0781a5305ada44, type: 2}
+  outcomeAmount: 5
