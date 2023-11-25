@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Metal Ore
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 8af28703ceca28a4c8a5e8a7499c3ca1, type: 2}
-  amount: 5
+  amount: 10

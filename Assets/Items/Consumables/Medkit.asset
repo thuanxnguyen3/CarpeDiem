@@ -36,7 +36,7 @@ MonoBehaviour:
   reloadSound: {fileID: 0}
   takeoutSound: {fileID: 0}
   emptySound: {fileID: 0}
-  healthChange: 0
-  hungerChange: 25
-  thirstChange: 5
+  healthChange: 100
+  hungerChange: 0
+  thirstChange: 0
   ghost: {fileID: 0}
